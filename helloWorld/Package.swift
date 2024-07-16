@@ -20,6 +20,9 @@ let package = Package(
         .executableTarget(
             name: "App",
             dependencies: [
+                // 라이브러리 임포트 설정
+                .product(name: "Fluent", package: "fluent"),
+                .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
