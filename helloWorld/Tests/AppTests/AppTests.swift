@@ -9,7 +9,7 @@ final class AppTests: XCTestCase {
         try await configure(app)
     }
     
-    override func tearDown() async throws {
+    override func tearDown() async throws { 
         try await self.app.asyncShutdown()
         self.app = nil
     }
@@ -20,21 +20,11 @@ final class AppTests: XCTestCase {
             XCTAssertEqual(res.body.string, "Hello, world!")
         })
     }
-    
+
     func testStudentRoute() async throws {
-//        // 위의 setUp(), tearDown() 의 코드와 같은 구문
-//        let app = try await Application.make(.testing)
-//        try await configure(app)
-//        
-//        defer {
-//            Task {
-//                try await app.asyncShutdown()
-//            }
-//        }
-        
         // Arrange
         let studentRecords = ["Peter": 3.42, "Thomas": 2.98, "Jane": 3.91, "Ryan": 4.00, "Kyle": 4.00]
-        
+
         for (studentName, gpa) in studentRecords {
             // Act
             try await app.test(.GET, "student/\(studentName)") { res async in
